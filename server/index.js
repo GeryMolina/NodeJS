@@ -2,6 +2,7 @@
 //Importar express
 const express = require('express');  //esta es la forma en la que trabaja node, podemos tambien hacerlo con import pero tendremos que instalar babel
 const path = require('path'); //Path es una libreria que viene integrada en node y que nos permite acceder al file system
+const bodyParser = require('body-parser')
 const routes = require('./routes');
 
 const configs = require('./config'); //Establecemos configuraciones para diferenciar ambientes
@@ -38,9 +39,11 @@ app.use((req, res, next) => {
     return next();
 
 })
+//Ejecutar el bodyParser
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 //Utilizamos Use para soportar a todos los metodos que vengan del router
 app.use('/', routes())
 
-app.listen(3000); //3000 es el puerto
+app.listen(3000); //3000 es el puerto  
