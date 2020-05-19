@@ -7,6 +7,7 @@ const routes = require('./routes');
 
 const configs = require('./config'); //Establecemos configuraciones para diferenciar ambientes
 
+require('dotenv').config({path: 'variables.env' })
 
 
 // db.authenticate()
@@ -31,11 +32,12 @@ const config = configs[app.get('env')]; //env es una palabra en node que no ayud
 //Creamos la variable para el sitio web
 app.locals.titulo = config.nombreSitio;
 
-//Muestra una fecha actual
+//Muestra una fecha actual y genera la ruta
 app.use((req, res, next) => {
     //Crear una nueva fecha
     const fecha = new Date();
     res.locals.fechaActual = fecha.getFullYear();//res.local no ayuda a generar variables que pueden leerse de forma interna ( seguardan como arreglo)
+    res.locals.rutas = req.path
     return next();
 
 })
@@ -46,4 +48,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Utilizamos Use para soportar a todos los metodos que vengan del router
 app.use('/', routes())
 
-app.listen(3000); //3000 es el puerto  
+// Puerto y Host para la app
+const host = process.env.HOST || '0.0.0.0' //este puerto no existe pero Heroku lo asigna una al identificarla
+const port = process.env.PORT || 3000
+app.listen(port, host, () => {
+    console.log('el servdor está funcionando')
+}); 

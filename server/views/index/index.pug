@@ -1,1 +1,40 @@
-h1 Inicio
+extends ../layout/index
+block slider
+    .slider
+        h1 Rio de Janeiro
+        em aventura
+
+block contenido
+    main.container.mt-5 
+        h2.text.center.mb-5 Sobre Nosotros
+        .row.mb-5 
+            .col-md-6
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                 |Aliquam pharetra sollicitudin suscipit. Donec ornare orci quis laoreet dignissim. 
+                 |Etiam convallis ligula eu egestas molestie. Mauris ac suscipit lacus. 
+                 |Suspendisse varius massa et dolor condimentum, et tristique velit varius. 
+                 |Donec id elit ut erat faucibus porta sed sit amet ipsum. Vivamus arcu magna, 
+                 |eleifend nec quam eget, placerat pulvinar nibh. Proin eleifend nisl id urna dapibus condimentum.
+                p Maecenas facilisis aliquet mi, dignissim dapibus nisl volutpat vel. Etiam posuere volutpat eleifend. 
+                 |Sed sed odio nec orci aliquet semper nec in erat. Nunc ut risus enim. 
+                 |In congue justo vel nulla ullamcorper, eget eleifend eros consectetur. 
+                 |Nullam porttitor eros ut sem pellentesque venenatis. Aliquam tempus ipsum nec lobortis venenatis. 
+                 |Morbi ut turpis a sem sollicitudin cursus a vel ex.
+            .col-md-6    
+                img(src="/img/inicio_nosotros.jpg", class="img-fluid")
+        h2.text.center.mb-5 Próximos Viajes        
+        include ../layout/partials/viajes  
+
+    .descuento
+        .container
+            .row
+                .col-md-6 
+                    .contenido
+                        h3 5% de Descuento
+                        p.titulo Viaje a Canada
+                        p.fecha 20 de marzo 2021 - 28 de marzo 2021
+                        p.precio $2,500 USD
+                        
+    .container
+        h2.text.center.my-5 Testimonios        
+        include ../layout/partials/testimonios                
